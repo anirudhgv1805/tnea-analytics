@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cutoffs")
+@Table(name = "cutoff")
 public class Cutoff {
 
     @Id
