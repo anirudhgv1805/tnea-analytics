@@ -13,10 +13,13 @@ import com.tneaanalytics.backend.security.authorization.JwtUtil;
 @Service
 public class AuthService {
 
-    @Autowired
-    private UserService userService;
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final UserService userService;
+    private final JwtUtil jwtUtil;
+
+    AuthService(UserService userService, JwtUtil jwtUtil) {
+        this.userService = userService;
+        this.jwtUtil = jwtUtil;
+    }
 
     public LoginResponse login(LoginRequest request) {
         if (EmailValidator.getInstance().isValid(request.getIdentifier())) {
@@ -26,7 +29,6 @@ public class AuthService {
         }
 
         return LoginResponse.builder().jwtToken(jwtUtil.generateToken(request.getIdentifier())).build();
-
     }
 
     public LoginResponse registerNewUser(RegisterRequest request) throws DuplicateUserException {

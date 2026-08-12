@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "jwt.expiration",
+    "type": "java.lang.String",
+    "description": "An int value which can be used to configure the time of expiry of JWT tokens (time in milliseconds is the input)"
+  },
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "A complex string for the encoding of JWT tokens for security"
+  }
+]}

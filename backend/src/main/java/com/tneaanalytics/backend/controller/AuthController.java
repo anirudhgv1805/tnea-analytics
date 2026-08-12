@@ -1,6 +1,5 @@
 package com.tneaanalytics.backend.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +18,11 @@ import jakarta.validation.Valid;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
+
+    AuthController(AuthService authService) {
+        this.authService = authService;
+    }
 
     // Register new user, login the yser and return LoginResponse
     @PostMapping("/register")
@@ -30,8 +32,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public LoginResponse loginNewUser(@Valid @RequestBody LoginRequest request) {
-        return authService.login(request);
+    public ResponseEntity<LoginResponse> loginNewUser(@Valid @RequestBody LoginRequest request) {
+        return new ResponseEntity<LoginResponse>(authService.login(request),HttpStatus.ACCEPTED);
     }
 
     // Password reset for user

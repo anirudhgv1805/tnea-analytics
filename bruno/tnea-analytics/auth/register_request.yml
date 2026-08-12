@@ -1,0 +1,22 @@
+info:
+  name: register_request
+  type: http
+
+http:
+  method: GET
+  url: "{{backend_url}}/api/auth/register"
+  body:
+    type: json
+    data: |-
+      {
+        "username":"StudentThaan",
+        "email":"stu@gmail.com",
+        "password":"12345678"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
