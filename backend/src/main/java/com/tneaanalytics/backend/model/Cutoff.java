@@ -32,6 +32,8 @@ public class Cutoff {
     @JoinColumn(name = "branch_id", referencedColumnName = "id")
     private Branch branch;
 
+    private int year;
+
     private Double oc;
     private Double bc;
     private Double bcm;

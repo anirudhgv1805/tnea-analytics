@@ -7,6 +7,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -32,9 +34,14 @@ public class Branch {
     private String name;
 
     // Each branch will belong to a department
-    @ManyToOne
-    @JoinColumn(name = "dept_id", referencedColumnName = "id")
-    private Department department;
+    @ManyToMany
+    @JoinTable(
+        name = "branch_department",
+        joinColumns = @JoinColumn(name = "branch_id"),
+        inverseJoinColumns = @JoinColumn(name = "department_id")
+
+    )
+    private List<Department> departments;
 
     @ManyToOne
     @JoinColumn(name = "college_id", referencedColumnName = "id")
@@ -43,4 +50,5 @@ public class Branch {
     @OneToMany(mappedBy = "branch")
     private List<Cutoff> cutoffs;
 
+    private int year;
 }

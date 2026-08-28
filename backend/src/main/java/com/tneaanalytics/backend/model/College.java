@@ -35,6 +35,10 @@ public class College {
 
     private String webLink;
 
+    private String financialStatus;
+
+    private String tier;
+
     @OneToMany(mappedBy = "college")
     private List<Branch> branches;
 
@@ -43,6 +47,5 @@ public class College {
 
     // Later point: want to add map coordinates of the college
     Double latitude;
-    Double longittude;
-
+    Double longitude;
 }

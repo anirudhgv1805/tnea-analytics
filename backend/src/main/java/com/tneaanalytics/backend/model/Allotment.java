@@ -31,6 +31,8 @@ public class Allotment {
     @JoinColumn(name = "branch_id", referencedColumnName = "id")
     private Branch branch;
 
+    private int year;
+
 
     // Seat counts alloted 
     private int oc_initial;
