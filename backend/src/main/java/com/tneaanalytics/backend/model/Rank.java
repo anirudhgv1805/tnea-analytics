@@ -33,13 +33,14 @@ public class Rank {
 
     private int year;
 
-    private int oc;
-    private int bc;
-    private int bcm;
-    private int mbc;
-    private int sc;
-    private int sca;
-    private int st;
+    
+    private Integer oc;
+    private Integer bc;
+    private Integer bcm;
+    private Integer mbc;
+    private Integer sc;
+    private Integer sca;
+    private Integer st;
 
     // Flag to show whether all the seats are filled or not
     private boolean bc_partial;
